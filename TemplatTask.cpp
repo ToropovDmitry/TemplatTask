@@ -2,31 +2,25 @@
 //
 
 #include "stdafx.h"
-#include "Stack.h"
+#include "AvlTree.h"
 
 int main()
 {
-	Stack<int> stack1 = Stack<int>(3);
-	stack1.push(1);
-	stack1.push(2);
-	stack1.push(3);	
-	Stack<int> stack2 = Stack<int>(2);
-	stack2.push(4);
-	stack2.push(5);
-	Stack<int> stack = StackMerge(stack1, stack2);
-	for (int i = 0; i < 5; i++)
-		std::cout << stack.pop() << std::endl;	
-	/*Stack<int> stack1 = Stack<int>(2);
-	Stack<int> stack2 = Stack<int>(2);
-	stack1.push(1);
-	stack1.push(2);
-	stack2.push(3);
-	Stack<int> mergeStack = StackMerge(stack1, stack2);
-	using namespace std;
-	cout << mergeStack.pop() << endl;
-	cout << mergeStack.pop() << endl;
-	cout << mergeStack.pop() << endl;
-	cout << mergeStack.pop() << endl;*/
+	AvlTree<int> tree = AvlTree<int>(60);	
+	tree.insert(70);
+	tree.insert(80);
+	tree.insert(90);
+	tree.insert(100);
+	tree.insert(130);
+	int* arr = tree.Leaves();
+	for (int i = 0; i < tree.getCount(); i++)
+		std::cout << arr[i] << " ";
+	std::cout << std::endl;
+	tree.remove(90);
+	arr = tree.Leaves();
+	for (int i = 0; i < tree.getCount(); i++)
+		std::cout << arr[i] << " ";
+	delete[] arr;
     return 0;
 }
 
